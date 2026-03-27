@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGODB_URI)
+	dbName: 'atla_tours'
     .then(() => console.log('✅ Conectado a MongoDB Atlas'))
     .catch(err => console.error('❌ Error conectando a MongoDB:', err));
 

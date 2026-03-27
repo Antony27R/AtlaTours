@@ -10,468 +10,179 @@
 </head>
 <body>
     <main>
- <!-- Filtros de Tours -->
-    <section class="tour-filters">
-        <div class="container">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="1dia">1 Día</button>
-                <button class="filter-btn" data-filter="2dias">2 Días</button>
-                <button class="filter-btn" data-filter="realizado">Realizados</button>
-                <button class="filter-btn" data-filter="proximo">Próximos</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lista de Tours -->
-    <section class="tours-list">
-        <div class="container">
-            <!-- Tour 1: Te-Pathé (Realizado) -->
-            <div class="tour-detailed" id="te-pathe" data-category="1dia realizado">
-                <div class="tour-gallery">
-                    <div class="main-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczPml6xZH4ze6J-b2uFys4kLOVS5uIITdWLF8ft7j55u_VI-W3x2qEjbvdvMcQShZaj4Q1lCN9O8jnS2rWUpmtc5a3HyVQ_SyMT9HxGiQznyHOldt101jl6r95OrvXLg7jEJ-xLcEXMLLl3IgFtTpdS_=w487-h255-s-no-gm?authuser=0" alt="Te-Pathé Balneario">
-                        </div>
-                    <div class="thumbnail-grid">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOJ_SnPIIroHy35tM3AZhjk9mHBuYg3iT7qzFSDodHPrR2OxnJ3-8bVpotoiTVkWNpK-2aUreMWLXGc3qL0K75VGGb1DWVdsImBEZhpwVrf-4uKelr5_BsHmA8-goCiTnS0mohb4Of0fkijCCGtxTaJ=w686-h914-s-no-gm?authuser=0" alt="Te-Pathé 1" class="thumbnail" onclick="changeImage('tepathe', 1)">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOJ2-Edh7fi47NfTeGpf945Q4V5R9Wg4jfVMXmxp_Ns5bZzhhWGIcQMfE57LQ2KvcLTuTOlfK1kMhfcl09FHm5tfaVLzGdsWGPZnaY4uTk1qhkevLfDVzmFmsxBIFuB2fopzKMwnrXC2RBq9r65S-PY=w600-h400-s-no-gm?authuser=0" alt="Te-Pathé 2" class="thumbnail" onclick="changeImage('tepathe', 2)">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNxHsTymsrSBUOLZQoom-2_V96RN0iVEe9SxdELpqP1Rk2fiPbF-nuH6-5n6BQxhw9tlv4a-6vqxOZqAjKH1a71-SnCfwH7N3GLIrWup3xZG2364ZX2lzlxZ2h3SeIOheDMVkflGtRHfyN5UEheh3Hu=w600-h400-s-no-gm?authuser=0" alt="Te-Pathé 3" class="thumbnail" onclick="changeImage('tepathe', 3)">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczP4euR281QUZA-9M_g1WN1UCnA8kUCFvpXbv2ZkFQ6ilQi39KHqW5T6J5qERXsEtzsxYkhMfmZmtimimZm0X_i6TxwsOfIn575gfarSrFtlYjOQR51hJSqShypFuRtFgm3B2VjAqzEkrRTSMn9js3XS=w914-h914-s-no-gm?authuser=0" alt="Te-Pathé 4" class="thumbnail" onclick="changeImage('tepathe', 4)">
-                    </div>
-                </div>
-                <div class="tour-details">
-                    <h2>Te-Pathé, Ixmiquilpan, Hidalgo</h2>
-                    <div class="tour-meta-large">
-                        <span><i class="far fa-calendar-alt"></i> 15 de marzo, 2026</span>
-                        <span><i class="far fa-clock"></i> 1 día (ida y vuelta)</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Hidalgo</span>
-                        <span><i class="fas fa-check-circle" style="color:#2e8b57;"></i> Realizado</span>
-                    </div>
-                    
-                    <div class="tour-description-full">
-                        <h3>Descripción</h3>
-                        <p>Disfruta un día completo de diversión y descanso en uno de los mejores balnearios de aguas templadas de Hidalgo. Relájate en sus albercas templadas, diviértete en los toboganes, la alberca de olas y deja que los más pequeños jueguen en las áreas infantiles, mientras tú te desconectas en el río lento.</p>
-                        <p>Ubicado cerca de CDMX y Querétaro, Te-Pathé es el destino perfecto para una escapada familiar de ida y vuelta. Ideal para todas las edades con aguas templadas todo el día.</p>
-                    </div>
-
-                    <div class="tour-itinerary">
-                        <h3>Itinerario</h3>
-                        <ul class="timeline">
-                            <li>
-                                <span class="time">05:00 AM</span>
-                                <span class="description">Cita en punto de reunión - "La llantera Avante Nativitas"</span>
-                            </li>
-                            <li>
-                                <span class="time">05:30 AM</span>
-                                <span class="description">Salida puntual rumbo a Hidalgo</span>
-                            </li>
-                            <li>
-                                <span class="time">08:00 AM</span>
-                                <span class="description">Llegada al Santuario del Señor de las Maravillas</span>
-                            </li>
-                            <li>
-                                <span class="time">08:00 - 09:30 AM</span>
-                                <span class="description">Tiempo libre para visitar el santuario, desayunar, comprar recuerdos y tomar fotografías</span>
-                            </li>
-                            <li>
-                                <span class="time">09:30 AM</span>
-                                <span class="description">Salida rumbo al balneario</span>
-                            </li>
-                            <li>
-                                <span class="time">10:30 - 07:30 PM</span>
-                                <span class="description">Tiempo libre para disfrutar: albercas termales, toboganes, alberca de olas, río lento y áreas familiares</span>
-                            </li>
-                            <li>
-                                <span class="time">06:00 PM</span>
-                                <span class="description">Salida a CDMX</span>
-                            </li>
-                            <li>
-                                <span class="time">09:00 - 10:30  PM aprox.</span>
-                                <span class="description">Llegada aproximada a CDMX</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="tour-includes">
-                        <h3>¿Qué incluye?</h3>
-                        <ul class="includes-list">
-                            <li><i class="fas fa-check-circle"></i> Viaje redondo ida y vuelta</li>
-                            <li><i class="fas fa-check-circle"></i> Entrada al balneario</li>
-                            <li><i class="fas fa-check-circle"></i> Seguro de viajero</li>
-                            <li><i class="fas fa-check-circle"></i> Coordinación ATLA TOURS</li>
-                            <li><i class="fas fa-check-circle"></i> Acceso a todas las atracciones</li>
-                        </ul>
-                    </div>
-
-                    <div class="tour-pricing">
-                        <h3>Precios por persona</h3>
-                        <div class="price-grid">
-                            <div class="price-item">
-                                <span class="age">Adultos</span>
-                                <span class="amount">$700</span>
-																																					
-                            </div>
-                            <div class="price-item">
-                                <span class="age">Adultos mayores (INAPAM)</span>
-                                <span class="amount">$600</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="age">Infantes (menos de 3 años)</span>
-                                <span class="amount">Gratis (sentados en las piernas de sus padres)</span>
-                            </div>
-                        </div>
-                        <p class="reservation-note"><i class="fas fa-info-circle"></i> Aparta tu lugar con $300</p>
-                    </div>
-
-                    <div class="tour-actions">
-                   <!--      <a href="contacto.html" class="btn">Consultar disponibilidad</a> -->
-                        <a href="https://wa.me/5215614232739?text=Hola,%20me%20interesa%20el%20tour%20a%20Te-Pathé" class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
+        <!-- Filtros de Tours -->
+        <section class="tour-filters">
+            <div class="container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="1dia">1 Día</button>
+                    <button class="filter-btn" data-filter="2dias">2 Días</button>
+                    <button class="filter-btn" data-filter="realizado">Realizados</button>
+                    <button class="filter-btn" data-filter="proximo">Próximos</button>
                 </div>
             </div>
+        </section>
 
-            <!-- Tour 2: El Geiser (Próximo) -->
-            <div class="tour-detailed" id="geiser" data-category="1dia proximo">
-                <div class="tour-gallery">
-                    <div class="main-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNxA9RJ88LK8m4FbDPxPnF0iOvwBMfQLbIwfbr2sNpThEY8KiTgRnyk-ubmi1_NUKxB7DtmY-1CthEWIwZrcA_NqHpqK0O2HnyG1rqiza14HRwkkYZiMNcbY1nU-E8dAO3dXazG_dyjABr7L45Y5NsW=w220-h190-s-no-gm?authuser=0" alt="El Geiser">
-							  
-													
-																																																								  
-																																																						
-																																																						   
-																																																						   
-                        </div>
-                    <div class="thumbnail-grid">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczP2zU3-pM0WA_n1Wpzh5gWmvh4cenGetYt_qaX9l8YaTQEgbhIQ8ypKTeSwdRZKAk57UYSIrWeSFRmTAbHJOPYe-LP9r9xZa8V4QequbHDVLg_piMsVdVaXaC2Ji_GRbFNLjj-pL3d04QZDNttCfN90=w831-h914-s-no-gm?authuser=0" alt="El Geiser 1" class="thumbnail" onclick="changeImage('geiser', 1)">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMiai6Q7iuvfsL4jvv65zrZ-Aql48rkDnQTtXANIADS1r63ivZQ1PcvuDysG3tOEHnrxXMcB4KvBkMUvS-MZdD_gw3k-XNzXGdEg_m8ysPILfViYw_LVHp2vHIFBrgs4LV4k4qISdMc02V3sx2-3YRk=w1200-h900-s-no-gm?authuser=0" alt="El Geiser 2" class="thumbnail" onclick="changeImage('geiser', 2)">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMvgCGAdUsdV_EEAegigapwzoncIqiMTw2188XIZeyUF2uxHwSN9QU1AckuNHaDP7n7buL7CzITzvsCGmQfLbnSMmGPVm5lPFf5-fIs66zvAbzKNC1_WcUX-YOEzesO_EPD-yWU75FErqFgQ4Qr_4xh=w630-h420-s-no-gm?authuser=0" alt="El Geiser 3" class="thumbnail" onclick="changeImage('geiser', 3)">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOsrLnzYHRoAOmxf6bCWZSeF7_v_Bp41BNERkdWxtPsvtvLWj4jUNKnph-LSvmbDQ0sebo5jRJfJU9f-wZB2A_AnANPCz8k4UEqpyl6psfvDczcoFq2cp1qjb1ypTFq9G0oxrmZnHzrrcWPEfgC9Xup=w214-h235-s-no-gm?authuser=0" alt="El Geiser 4" class="thumbnail" onclick="changeImage('geiser', 4)">
-                    </div>
-                </div>
-                <div class="tour-details">
-                    <h2>El Geiser, Tecozautla, Hidalgo</h2>
-                    <div class="tour-meta-large">
-                        <span><i class="far fa-calendar-alt"></i> 17 de Mayo, 2026</span>
-                        <span><i class="far fa-clock"></i> 1 día (ida y vuelta)</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Hidalgo</span>
-                        <span><i class="fas fa-clock" style="color:#f4a261;"></i> Próximamente</span>
-                    </div>
-                    
-                    <div class="tour-description-full">
-                        <h3>Descripción</h3>
-                        <p>Descubre las maravillosas aguas termales de El Geiser en Tecozautla, Hidalgo. Disfruta de un día de relajación en sus pozas termales y conoce el pintoresco centro de Tecozautla con su icónico Reloj Monumental.</p>
-                        <p>Un destino perfecto para desconectarte y disfrutar en familia de las propiedades curativas de las aguas termales.</p>
-                    </div>
-
-                    <div class="tour-itinerary">
-                        <h3>Itinerario</h3>
-                        <ul class="timeline">
-                            <li>
-                                <span class="time">05:00 AM</span>
-                                <span class="description">Llegada al punto de salida</span>
-                            </li>
-                            <li>
-                                <span class="time">05:30 AM</span>
-                                <span class="description">Salida de CDMX</span>
-                            </li>
-                            <li>
-                                <span class="time">09:00 AM</span>
-                                <span class="description">Llegada al balneario El Geiser</span>
-                            </li>
-                            <li>
-                                <span class="time">09:00 AM - 03:30 PM</span>
-                                <span class="description">Disfrutar de las aguas termales y actividades</span>
-                            </li>
-                            <li>
-                                <span class="time">03:30 PM</span>
-                                <span class="description">Salida hacia Tecozautla</span>
-                            </li>
-                            <li>
-                                <span class="time">04:00 PM - 05:30 PM</span>
-                                <span class="description">Recorrido en el centro de Tecozautla - Visita al Reloj Monumental</span>
-                            </li>
-                            <li>
-                                <span class="time">05:45 PM</span>
-                                <span class="description">Salida a CDMX</span>
-                            </li>
-                            <li>
-                                <span class="time">09:00 - 09:30 PM</span>
-                                <span class="description">Llegada aproximada a CDMX</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="tour-includes">
-                        <h3>¿Qué incluye?</h3>
-                        <ul class="includes-list">
-                            <li><i class="fas fa-check-circle"></i> Transporte redondo</li>
-                            <li><i class="fas fa-check-circle"></i> Entrada al balneario El Geiser</li>
-                            <li><i class="fas fa-check-circle"></i> Seguro de viajero</li>
-                            <li><i class="fas fa-check-circle"></i> Coordinación ATLA TOURS</li>
-                            <li><i class="fas fa-check-circle"></i> Acceso a todas las áreas del balneario</li>
-                        </ul>
-                    </div>
-
-                    <div class="tour-pricing">
-                        <h3>Precios por persona</h3>
-                        <div class="price-grid">
-                            <div class="price-item highlight">
-                                <span class="age">Precio regular</span>
-                                <span class="amount">$850</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="age">Primeras 10 personas (contado)</span>
-                                <span class="amount">$750</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="age">Familias de 4 o más personas</span>
-                                <span class="amount">$800 c/u</span>
-                            </div>
-                        </div>
-                        <p class="reservation-note"><i class="fas fa-info-circle"></i> ¡Aprovecha las Ofertas! Aparta tu lugar con $300</p>
-                    </div>
-
-                    <div class="tour-actions">
-                        <a href="contacto.html" class="btn">Apartar mi lugar</a>
-                        <a href="https://wa.me/5215614232739?text=Hola,%20me%20interesa%20el%20tour%20a%20El%20Geiser" class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
+        <!-- Lista de Tours (se llena dinámicamente) -->
+        <section class="tours-list">
+            <div class="container" id="tours-container">
+                <div style="text-align: center; padding: 60px;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary-color);"></i>
+                    <p>Cargando tours...</p>
                 </div>
             </div>
-
-            <!-- Tour 3: Acapulco (Próximo - Noviembre) -->
-            <div class="tour-detailed" id="acapulco" data-category="2dias proximo">
-                <div class="tour-gallery">
-                    <div class="main-image">
-                        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Acapulco" id="main-image-acapulco">
-							  
-													
-																																																								   
-																																																							
-																																																						 
-																																																							
-							  
-                    </div>
-                    <div class="thumbnail-grid">
-                        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Acapulco 1" class="thumbnail active" onclick="changeImage('acapulco', 1)">
-                        <img src="https://images.unsplash.com/photo-1516487200032-8532cb603261?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Acapulco 2" class="thumbnail" onclick="changeImage('acapulco', 2)">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Acapulco 3" class="thumbnail" onclick="changeImage('acapulco', 3)">
-                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Acapulco 4" class="thumbnail" onclick="changeImage('acapulco', 4)">
-                    </div>
-                </div>
-                <div class="tour-details">
-                    <h2>Acapulco, Guerrero - Zona Diamante y Puerto Marqués</h2>
-                    <div class="tour-meta-large">
-                        <span><i class="far fa-calendar-alt"></i> Noviembre 2026 (último fin de semana)</span>
-                        <span><i class="far fa-clock"></i> 2 días / 1 noche</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Guerrero</span>
-                        <span><i class="fas fa-clock" style="color:#f4a261;"></i> Próximamente</span>
-                    </div>
-                    
-                    <div class="tour-description-full">
-                        <h3>Descripción</h3>
-                        <p>Escápate a Acapulco, el puerto más emblemático de México. Disfruta de las hermosas playas de la Zona Diamante, relájate en Puerto Marqués y vive la magia de la Quebrada. Un fin de semana perfecto para descansar y disfrutar del mejor ambiente playero.</p>
-                        <p>Incluye hospedaje en zona privilegiada, desayunos y transporte cómodo desde CDMX.</p>
-                    </div>
-
-                    <div class="tour-itinerary">
-                        <h3>Itinerario</h3>
-                        <ul class="timeline">
-                            <li>
-                                <span class="time">Día 1 - 06:00 AM</span>
-                                <span class="description">Salida desde CDMX</span>
-                            </li>
-                            <li>
-                                <span class="time">Día 1 - 11:00 AM</span>
-                                <span class="description">Llegada a Acapulco - Check-in en hotel Zona Diamante</span>
-                            </li>
-                            <li>
-                                <span class="time">Día 1 - 12:00 PM</span>
-                                <span class="description">Tiempo libre en playa Revolcadero o Playa Diamante</span>
-                            </li>
-                            <li>
-                                <span class="time">Día 1 - 06:00 PM</span>
-                                <span class="description">Visita a la Quebrada para ver los famosos clavadistas</span>
-                            </li>
-                            <li>
-                                <span class="time">Día 1 - 08:00 PM</span>
-                                <span class="description">Cena libre en la Zona Dorada</span>
-                            </li>
-                            <li>
-                                <span class="time">Día 2 - 08:00 AM</span>
-                                <span class="description">Desayuno incluido en el hotel</span>
-                            </li>
-                            <li>
-                                <span class="time">Día 2 - 09:30 AM</span>
-                                <span class="description">Recorrido por Puerto Marqués - Paseo en lancha (opcional)</span>
-                            </li>
-                            <li>
-                                <span class="time">Día 2 - 01:00 PM</span>
-                                <span class="description">Comida libre en la playa</span>
-                            </li>
-                            <li>
-                                <span class="time">Día 2 - 04:00 PM</span>
-                                <span class="description">Check-out y salida a CDMX</span>
-                            </li>
-                            <li>
-                                <span class="time">Día 2 - 09:00 PM</span>
-                                <span class="description">Llegada aproximada a CDMX</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="tour-includes">
-                        <h3>¿Qué incluye?</h3>
-                        <ul class="includes-list">
-                            <li><i class="fas fa-check-circle"></i> Transporte redondo CDMX - Acapulco</li>
-                            <li><i class="fas fa-check-circle"></i> 1 noche de hospedaje en Zona Diamante</li>
-                            <li><i class="fas fa-check-circle"></i> Desayuno incluido</li>
-                            <li><i class="fas fa-check-circle"></i> Seguro de viajero</li>
-                            <li><i class="fas fa-check-circle"></i> Coordinación ATLA TOURS</li>
-                        </ul>
-                    </div>
-
-                    <div class="tour-pricing">
-                        <h3>Precios por persona</h3>
-                        <div class="price-grid">
-                            <div class="price-item highlight">
-                                <span class="age">Precio regular (habitación doble)</span>
-                                <span class="amount">$1,800</span>
-																																			   
-                            </div>
-                            <div class="price-item">
-                                <span class="age">Niños (3-10 años)</span>
-                                <span class="amount">$1,200</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="age">Habitación individual</span>
-                                <span class="amount">$2,500</span>
-                            </div>
-                        </div>
-                        <p class="reservation-note"><i class="fas fa-info-circle"></i> Precios sujetos a cambios. Aparta tu lugar con $500</p>
-                    </div>
-
-                    <div class="tour-actions">
-                        <a href="contacto.html" class="btn">Apartar mi lugar</a>
-                        <a href="https://wa.me/5215614232739?text=Hola,%20me%20interesa%20el%20tour%20a%20Acapulco%20en%20Noviembre" class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
     </main>
 
-    <!-- Scripts -->
-	<script>
-    // Cargar tours desde la API
-    async function loadToursFromAPI() {
-        try {
-            const response = await fetch('http://localhost:3000/api/tours');
-            const tours = await response.json();
-            renderTours(tours);
-        } catch (error) {
-            console.error('Error cargando tours:', error);
-        }
-    }
-    
-    function renderTours(tours) {
-        const container = document.querySelector('.tours-list .container');
-        if (!container) return;
-        
-        // Limpiar contenido excepto filtros
-        const existingTours = container.querySelectorAll('.tour-detailed');
-        existingTours.forEach(tour => tour.remove());
-        
-        // Renderizar cada tour
-        tours.forEach(tour => {
-            const tourHtml = createTourHTML(tour);
-            container.insertAdjacentHTML('beforeend', tourHtml);
-        });
-        
-        // Re-inicializar funcionalidades
-        if (typeof initTourFilters === 'function') initTourFilters();
-        if (typeof initGallery === 'function') initGallery();
-    }
-    
-    function createTourHTML(tour) {
-        // Generar HTML del tour dinámicamente
-        return `
-            <div class="tour-detailed" id="${tour.id}" data-category="${tour.categoria}">
-                <div class="tour-gallery">
-                    <div class="main-image">
-                        <img src="${tour.imagenes[0] || 'https://via.placeholder.com/800x400'}" alt="${tour.titulo}" id="main-image-${tour.id}">
-                    </div>
-                    <div class="thumbnail-grid">
-                        ${tour.imagenes.map((img, idx) => `
-                            <img src="${img}" alt="${tour.titulo} ${idx+1}" class="thumbnail ${idx === 0 ? 'active' : ''}" onclick="changeImage('${tour.id}', ${idx+1})">
-                        `).join('')}
-                    </div>
-                </div>
-                <div class="tour-details">
-                    <h2>${tour.titulo}</h2>
-                    <div class="tour-meta-large">
-                        <span><i class="far fa-calendar-alt"></i> ${tour.fecha}</span>
-                        <span><i class="far fa-clock"></i> ${tour.duracion}</span>
-                        <span><i class="fas fa-map-marker-alt"></i> ${tour.ubicacion}</span>
-                        <span><i class="fas ${tour.estado === 'realizado' ? 'fa-check-circle' : 'fa-clock'}" style="color:${tour.estado === 'realizado' ? '#2e8b57' : '#f4a261'}"></i> ${tour.estado === 'realizado' ? 'Realizado' : 'Próximamente'}</span>
-                    </div>
-                    <div class="tour-description-full">
-                        <h3>Descripción</h3>
-                        <p>${tour.descripcionLarga || tour.descripcion}</p>
-                    </div>
-                    <div class="tour-itinerary">
-                        <h3>Itinerario</h3>
-                        <ul class="timeline">
-                            ${tour.itinerario.map(item => `
-                                <li><span class="time">${item.hora}</span><span class="description">${item.actividad}</span></li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                    <div class="tour-includes">
-                        <h3>¿Qué incluye?</h3>
-                        <ul class="includes-list">
-                            ${tour.incluye.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div class="tour-pricing">
-                        <h3>Precios por persona</h3>
-                        <div class="price-grid">
-                            ${tour.precios.map(p => `
-                                <div class="price-item"><span class="age">${p.tipo}</span><span class="amount">${p.precio}</span></div>
-                            `).join('')}
-                        </div>
-                        ${tour.promociones && tour.promociones.length ? `
-                            ${tour.promociones.map(p => `<div class="price-item highlight"><span class="age">${p.descripcion}</span><span class="amount">${p.precio}</span></div>`).join('')}
-                        ` : ''}
-                        <p class="reservation-note"><i class="fas fa-info-circle"></i> ${tour.reservaNota}</p>
-                    </div>
-                    <div class="tour-actions">
-                        <a href="contacto.html" class="btn">${tour.estado === 'realizado' ? 'Consultar disponibilidad' : 'Apartar mi lugar'}</a>
-                        <a href="https://wa.me/5215614232739?text=Hola,%20me%20interesa%20el%20tour%20a%20${encodeURIComponent(tour.titulo)}" class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-    
-    // Cargar tours al iniciar
-    document.addEventListener('DOMContentLoaded', () => {
-        loadToursFromAPI();
-    });
-</script>
-	
     <script src="components.js"></script>
     <script>
-        // Cargar componentes con page header
+        // Cargar componentes (header, footer, etc)
         loadPageWithHeader('Nuestros Tours', 'tours');
+        
+        const API_URL = 'http://localhost:3000/api';
+        
+        // Función para cambiar imagen en galería
+        window.changeImage = function(tourId, imageNumber) {
+            const mainImage = document.getElementById(`main-image-${tourId}`);
+            const thumbnails = document.querySelectorAll(`#${tourId} .thumbnail`);
+            
+            if (mainImage && thumbnails[imageNumber - 1]) {
+                mainImage.src = thumbnails[imageNumber - 1].src;
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                thumbnails[imageNumber - 1].classList.add('active');
+            }
+        };
+        
+        // Escapar HTML
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Generar HTML de un tour
+        function createTourHTML(tour) {
+            return `
+                <div class="tour-detailed" id="${tour.id}" data-category="${tour.categoria}">
+                    <div class="tour-gallery">
+                        <div class="main-image">
+                            <img src="${tour.imagenes[0] || 'https://via.placeholder.com/800x400'}" alt="${escapeHtml(tour.titulo)}" id="main-image-${tour.id}">
+                        </div>
+                        <div class="thumbnail-grid">
+                            ${tour.imagenes.map((img, idx) => `
+                                <img src="${img}" alt="${escapeHtml(tour.titulo)} ${idx+1}" class="thumbnail ${idx === 0 ? 'active' : ''}" onclick="changeImage('${tour.id}', ${idx+1})">
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="tour-details">
+                        <h2>${escapeHtml(tour.titulo)}</h2>
+                        <div class="tour-meta-large">
+                            <span><i class="far fa-calendar-alt"></i> ${escapeHtml(tour.fecha)}</span>
+                            <span><i class="far fa-clock"></i> ${escapeHtml(tour.duracion)}</span>
+                            <span><i class="fas fa-map-marker-alt"></i> ${escapeHtml(tour.ubicacion)}</span>
+                            <span><i class="fas ${tour.estado === 'realizado' ? 'fa-check-circle' : 'fa-clock'}" style="color:${tour.estado === 'realizado' ? '#2e8b57' : '#f4a261'}"></i> ${tour.estado === 'realizado' ? 'Realizado' : 'Próximamente'}</span>
+                        </div>
+                        <div class="tour-description-full">
+                            <h3>Descripción</h3>
+                            <p>${escapeHtml(tour.descripcionLarga || tour.descripcion)}</p>
+                        </div>
+                        <div class="tour-itinerary">
+                            <h3>Itinerario</h3>
+                            <ul class="timeline">
+                                ${tour.itinerario.map(item => `
+                                    <li><span class="time">${escapeHtml(item.hora)}</span><span class="description">${escapeHtml(item.actividad)}</span></li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        <div class="tour-includes">
+                            <h3>¿Qué incluye?</h3>
+                            <ul class="includes-list">
+                                ${tour.incluye.map(item => `<li><i class="fas fa-check-circle"></i> ${escapeHtml(item)}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="tour-pricing">
+                            <h3>Precios por persona</h3>
+                            <div class="price-grid">
+                                ${tour.precios.map(p => `
+                                    <div class="price-item"><span class="age">${escapeHtml(p.tipo)}</span><span class="amount">${escapeHtml(p.precio)}</span></div>
+                                `).join('')}
+                            </div>
+                            ${tour.promociones && tour.promociones.length ? `
+                                <div class="price-grid">
+                                    ${tour.promociones.map(p => `
+                                        <div class="price-item highlight"><span class="age">${escapeHtml(p.descripcion)}</span><span class="amount">${escapeHtml(p.precio)}</span></div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                            <p class="reservation-note"><i class="fas fa-info-circle"></i> ${escapeHtml(tour.reservaNota)}</p>
+                        </div>
+                        <div class="tour-actions">
+                            <a href="contacto.html" class="btn">${tour.estado === 'realizado' ? 'Consultar disponibilidad' : 'Apartar mi lugar'}</a>
+                            <a href="https://wa.me/5215614232739?text=Hola,%20me%20interesa%20el%20tour%20a%20${encodeURIComponent(tour.titulo)}" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Cargar tours desde la API
+        async function loadTours() {
+            const container = document.getElementById('tours-container');
+            if (!container) return;
+            
+            try {
+                const response = await fetch(`${API_URL}/tours`);
+                const tours = await response.json();
+                
+                if (!tours || tours.length === 0) {
+                    container.innerHTML = '<div style="text-align: center; padding: 60px;"><p>No hay tours disponibles por el momento.</p></div>';
+                    return;
+                }
+                
+                container.innerHTML = tours.map(tour => createTourHTML(tour)).join('');
+                
+                // Inicializar filtros después de cargar
+                initFilters();
+                
+            } catch (error) {
+                console.error('Error cargando tours:', error);
+                container.innerHTML = '<div style="text-align: center; padding: 60px;"><p style="color: red;">Error cargando tours. Asegúrate que el servidor esté corriendo.</p></div>';
+            }
+        }
+        
+        // Inicializar filtros de tours
+        function initFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const tourItems = document.querySelectorAll('.tour-detailed');
+            
+            if (filterButtons.length === 0) return;
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    tourItems.forEach(tour => {
+                        const category = tour.getAttribute('data-category');
+                        if (filterValue === 'all' || (category && category.includes(filterValue))) {
+                            tour.style.display = 'grid';
+                        } else {
+                            tour.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Esperar a que los componentes se carguen antes de cargar tours
+        setTimeout(() => {
+            loadTours();
+        }, 500);
     </script>
     <script src="main.js"></script>
 </body>

@@ -298,37 +298,221 @@ window.deleteTour = async (tourId) => {
     }
 };
 
-// Editar tour
+// Variables para el modal de edición
+let currentEditTour = null;
+const editModal = document.getElementById('edit-modal');
+const editForm = document.getElementById('edit-tour-form');
+const cancelEditBtn = document.getElementById('cancel-edit');
+const modalClose = document.querySelector('.modal-close');
+
+// Función para convertir array de objetos a texto (para edición)
+function arrayToText(array, separator = ' | ') {
+    if (!array || !Array.isArray(array)) return '';
+    return array.map(item => {
+        if (typeof item === 'object') {
+            if (item.hora && item.actividad) return `${item.hora} | ${item.actividad}`;
+            if (item.tipo && item.precio) return `${item.tipo} | ${item.precio}`;
+            if (item.descripcion && item.precio) return `${item.descripcion} | ${item.precio}`;
+            return '';
+        }
+        return item;
+    }).join('\n');
+}
+
+// Función para convertir texto a array de objetos (itinerario)
+function textToItinerario(text) {
+    if (!text) return [];
+    return text.split('\n')
+        .filter(line => line.trim())
+        .map(line => {
+            const [hora, actividad] = line.split('|').map(s => s.trim());
+            return { hora: hora || '', actividad: actividad || '' };
+        });
+}
+
+// Función para convertir texto a array de precios
+function textToPrecios(text) {
+    if (!text) return [];
+    return text.split('\n')
+        .filter(line => line.trim())
+        .map(line => {
+            const [tipo, precio] = line.split('|').map(s => s.trim());
+            return { tipo: tipo || '', precio: precio || '' };
+        });
+}
+
+// Función para convertir texto a array de promociones
+function textToPromociones(text) {
+    if (!text) return [];
+    return text.split('\n')
+        .filter(line => line.trim())
+        .map(line => {
+            const [descripcion, precio] = line.split('|').map(s => s.trim());
+            return { descripcion: descripcion || '', precio: precio || '' };
+        });
+}
+
+// Función para convertir texto a array simple (incluye)
+function textToArray(text) {
+    if (!text) return [];
+    return text.split('\n').filter(line => line.trim());
+}
+
+// Función para convertir array de URLs a texto
+function imagenesToText(imagenes) {
+    if (!imagenes || !Array.isArray(imagenes)) return '';
+    return imagenes.join('\n');
+}
+
+// Abrir modal de edición
 window.editTour = async (tourId) => {
     const tour = currentTours.find(t => t.id === tourId);
     if (!tour) return;
     
-    // Abrir modal de edición (por simplicidad, usamos prompt)
-    const nuevosDatos = prompt('Editar título:', tour.titulo);
-    if (nuevosDatos && nuevosDatos !== tour.titulo) {
-        try {
-            const response = await fetch(`${API_URL}/tours/${tourId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${authToken}`
-                },
-                body: JSON.stringify({ ...tour, titulo: nuevosDatos })
-            });
-            
-            if (response.ok) {
-                showNotification('Tour actualizado correctamente', 'success');
-                await loadTours();
-                await loadDestacados();
-            } else {
-                showNotification('Error al actualizar tour', 'error');
-            }
-        } catch (error) {
-            console.error('Error actualizando tour:', error);
-            showNotification('Error de conexión', 'error');
-        }
-    }
+    currentEditTour = { ...tour };
+    
+    // Llenar el formulario con los datos actuales
+    document.getElementById('edit-id').value = tour.id || '';
+    document.getElementById('edit-titulo').value = tour.titulo || '';
+    document.getElementById('edit-categoria').value = tour.categoria || '';
+    document.getElementById('edit-fecha').value = tour.fecha || '';
+    document.getElementById('edit-duracion').value = tour.duracion || '';
+    document.getElementById('edit-ubicacion').value = tour.ubicacion || '';
+    document.getElementById('edit-estado').value = tour.estado || 'proximo';
+    document.getElementById('edit-descripcion').value = tour.descripcion || '';
+    document.getElementById('edit-descripcion-larga').value = tour.descripcionLarga || tour.descripcion || '';
+    document.getElementById('edit-itinerario').value = arrayToText(tour.itinerario);
+    document.getElementById('edit-incluye').value = (tour.incluye || []).join('\n');
+    document.getElementById('edit-precios').value = arrayToText(tour.precios);
+    document.getElementById('edit-promociones').value = arrayToText(tour.promociones || []);
+    document.getElementById('edit-reserva-nota').value = tour.reservaNota || 'Aparta tu lugar con $300';
+    document.getElementById('edit-imagenes').value = imagenesToText(tour.imagenes);
+    
+    // Actualizar vista previa
+    updateEditPreview();
+    
+    // Mostrar modal
+    editModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
 };
+
+// Actualizar vista previa en el modal
+function updateEditPreview() {
+    const previewContent = document.getElementById('edit-preview-content');
+    if (!previewContent) return;
+    
+    const titulo = document.getElementById('edit-titulo')?.value || 'Sin título';
+    const fecha = document.getElementById('edit-fecha')?.value || 'Fecha no especificada';
+    const duracion = document.getElementById('edit-duracion')?.value || 'Duración no especificada';
+    const ubicacion = document.getElementById('edit-ubicacion')?.value || 'Ubicación no especificada';
+    const descripcion = document.getElementById('edit-descripcion')?.value || 'Sin descripción';
+    
+    previewContent.innerHTML = `
+        <h5 style="color: var(--primary-color);">${escapeHtml(titulo)}</h5>
+        <p><strong>📅 Fecha:</strong> ${escapeHtml(fecha)}</p>
+        <p><strong>⏱️ Duración:</strong> ${escapeHtml(duracion)}</p>
+        <p><strong>📍 Ubicación:</strong> ${escapeHtml(ubicacion)}</p>
+        <p><strong>📝 Descripción:</strong> ${escapeHtml(descripcion.substring(0, 100))}${descripcion.length > 100 ? '...' : ''}</p>
+    `;
+}
+
+// Cerrar modal
+function closeEditModal() {
+    editModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    currentEditTour = null;
+}
+
+// Guardar cambios del tour editado
+async function saveEditTour() {
+    if (!currentEditTour) return;
+    
+    const tourData = {
+        id: document.getElementById('edit-id').value.trim(),
+        titulo: document.getElementById('edit-titulo').value.trim(),
+        categoria: document.getElementById('edit-categoria').value.trim(),
+        fecha: document.getElementById('edit-fecha').value.trim(),
+        duracion: document.getElementById('edit-duracion').value.trim(),
+        ubicacion: document.getElementById('edit-ubicacion').value.trim(),
+        estado: document.getElementById('edit-estado').value,
+        descripcion: document.getElementById('edit-descripcion').value.trim(),
+        descripcionLarga: document.getElementById('edit-descripcion-larga').value.trim(),
+        itinerario: textToItinerario(document.getElementById('edit-itinerario').value),
+        incluye: textToArray(document.getElementById('edit-incluye').value),
+        precios: textToPrecios(document.getElementById('edit-precios').value),
+        promociones: textToPromociones(document.getElementById('edit-promociones').value),
+        reservaNota: document.getElementById('edit-reserva-nota').value.trim() || 'Aparta tu lugar con $300',
+        imagenes: textToArray(document.getElementById('edit-imagenes').value),
+        destacado: currentEditTour.destacado || false,
+        ordenDestacado: currentEditTour.ordenDestacado || 0
+    };
+    
+    // Validar campos obligatorios
+    if (!tourData.id || !tourData.titulo || !tourData.categoria || !tourData.fecha || 
+        !tourData.duracion || !tourData.ubicacion || !tourData.descripcion || 
+        !tourData.descripcionLarga || tourData.itinerario.length === 0 || 
+        tourData.incluye.length === 0 || tourData.precios.length === 0 || 
+        tourData.imagenes.length === 0) {
+        showNotification('Por favor completa todos los campos obligatorios', 'error');
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/tours/${currentEditTour.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify(tourData)
+        });
+        
+        if (response.ok) {
+            showNotification('Tour actualizado correctamente', 'success');
+            closeEditModal();
+            await loadTours();
+            await loadDestacados();
+        } else {
+            const error = await response.json();
+            showNotification(error.message || 'Error al actualizar tour', 'error');
+        }
+    } catch (error) {
+        console.error('Error actualizando tour:', error);
+        showNotification('Error de conexión', 'error');
+    }
+}
+
+// Eventos del modal
+if (editForm) {
+    editForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        saveEditTour();
+    });
+}
+
+if (cancelEditBtn) {
+    cancelEditBtn.addEventListener('click', closeEditModal);
+}
+
+if (modalClose) {
+    modalClose.addEventListener('click', closeEditModal);
+}
+
+// Cerrar modal al hacer clic fuera
+window.addEventListener('click', (e) => {
+    if (e.target === editModal) {
+        closeEditModal();
+    }
+});
+
+// Actualizar vista previa en tiempo real en el modal
+const editPreviewFields = ['edit-titulo', 'edit-fecha', 'edit-duracion', 'edit-ubicacion', 'edit-descripcion'];
+editPreviewFields.forEach(fieldId => {
+    const element = document.getElementById(fieldId);
+    if (element) {
+        element.addEventListener('input', updateEditPreview);
+    }
+});
 
 // Crear nuevo tour
 document.getElementById('create-tour-form')?.addEventListener('submit', async (e) => {

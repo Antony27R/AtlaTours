@@ -1,3 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLA TOURS - Donde la vida fluye | Agencia de Viajes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- El contenido de la página se cargará aquí -->
+    <main>
+        <!-- Hero Section con Video -->
+        <section id="inicio" class="hero-video">
+            <div class="video-background">
+                <video autoplay muted loop id="hero-video">
+                    <source src="Promo2.mp4" type="video/mp4">
+                    Tu navegador no soporta video.
+                </video>
+                <div class="overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1>VIAJA CON NOSOTROS</h1>
+                <div class="logo-large">
+                    <img src="images/logo1.png" alt="ATLA TOURS" class="logo-img-large">
+                </div>
+                <p class="hero-subtitle">Donde la vida fluye</p>
+                <p class="hero-description">Descubre experiencias únicas diseñadas para que solo te preocupes por disfrutar. México es nuestro camino.</p>
+                <div class="hero-buttons">
+                    <a href="tours.html" class="btn">Explorar Tours</a>
+                    <a href="#destacados" class="btn btn-secondary">Ver Destacados</a>
+                </div>
+            </div>
+            <div class="wave">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+                </svg>
+            </div>
+        </section>
+
+            <!-- Sección de Tours Destacados -->
 <!-- Sección de Tours Destacados (reemplazar la sección completa) -->
 <section id="destacados" class="featured-tours">
     <div class="container">
@@ -27,7 +69,7 @@
         if (!container) return;
         
         try {
-           const response = await fetch('https://atla-tours-backend.onrender.com/api/tours/destacados');
+            const response = await fetch('https://atla-tours-backend.onrender.com/api/tours/destacados');
             const tours = await response.json();
             
             if (!tours || tours.length === 0) {
@@ -75,3 +117,61 @@
         loadDestacados();
     });
 </script>
+    </main>
+
+    <!-- Scripts -->
+	
+<script>
+    // Cargar tours destacados desde la API
+    async function loadDestacadosFromAPI() {
+        try {
+            const response = await fetch('http://localhost:3000/api/tours/destacados');
+            const tours = await response.json();
+            renderDestacados(tours);
+        } catch (error) {
+            console.error('Error cargando tours destacados:', error);
+        }
+    }
+    
+    function renderDestacados(tours) {
+        const container = document.querySelector('.tours-grid');
+        if (!container) return;
+        
+        container.innerHTML = tours.map(tour => `
+            <div class="tour-card">
+                <div class="tour-image">
+                    <img src="${tour.imagenes[0] || 'https://via.placeholder.com/400x200'}" alt="${tour.titulo}">
+                    <span class="tour-badge">${tour.estado === 'realizado' ? 'Realizado' : 'Próximo'}</span>
+                </div>
+                <div class="tour-info">
+                    <h3>${tour.titulo}</h3>
+                    <div class="tour-meta">
+                        <span><i class="far fa-calendar"></i> ${tour.fecha.split(',').pop() || tour.fecha}</span>
+                        <span><i class="far fa-clock"></i> ${tour.duracion.split(' ')[0]}</span>
+                        <span><i class="fas fa-map-marker-alt"></i> ${tour.ubicacion}</span>
+                    </div>
+                    <p class="tour-description">${tour.descripcion.substring(0, 100)}${tour.descripcion.length > 100 ? '...' : ''}</p>
+                    <div class="tour-price">
+                        <span class="price">${tour.precios[0]?.precio || 'Consultar'}</span>
+                        <a href="tours.html#${tour.id}" class="btn-small">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Cargar destacados al iniciar
+    document.addEventListener('DOMContentLoaded', () => {
+        loadDestacadosFromAPI();
+    });
+</script>
+	
+	
+    <script src="components.js"></script>
+    <script>
+        // Cargar componentes (header, whatsapp, footer)
+        loadHomeComponents();
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

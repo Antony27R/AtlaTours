@@ -11,16 +11,18 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:5500', 'http://127.0.0.1:5500', 'http://localhost:3000'],
+    origin: ['http://localhost:5500', 'http://127.0.0.1:5500', 'http://localhost:3000', 'https://atla-tours-backend.onrender.com'],
     credentials: true
 }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Conexión a MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-	dbName: 'atla_tours'
-    .then(() => console.log('✅ Conectado a MongoDB Atlas'))
+// Conexión a MongoDB - FORZAR base de datos atla_tours
+const MONGODB_URI = process.env.MONGODB_URI;
+mongoose.connect(MONGODB_URI, {
+    dbName: 'atla_tours'  // Esto fuerza el nombre de la base de datos
+})
+    .then(() => console.log('✅ Conectado a MongoDB Atlas - Base de datos: atla_tours'))
     .catch(err => console.error('❌ Error conectando a MongoDB:', err));
 
 // Rutas

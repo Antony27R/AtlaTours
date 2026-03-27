@@ -1,0 +1,46 @@
+proyecto/
+│
+├── frontend/                    # Archivos estáticos
+│   ├── index.html
+│   ├── tours.html
+│   ├── galeria.html
+│   ├── testimonios.html
+│   ├── sobre-nosotros.html
+│   ├── contacto.html
+│   ├── admin.html               # Página de administración
+│   ├── style.css
+│   ├── components.js
+│   ├── main.js
+│   ├── admin.js                 # Lógica de administración
+│   └── images/
+│       ├── logo-atla.png
+│       └── logo-atla-large.png
+│
+├── backend/                     # Backend Node.js
+│   ├── server.js                # Servidor principal
+│   ├── package.json
+│   ├── .env                     # Variables de entorno
+│   ├── models/
+│   │   └── Tour.js              # Modelo de Tour
+│   │   └── Admin.js             # Modelo de Administrador
+│   │   └── LoginAttempt.js      # Modelo de intentos de login
+│   ├── routes/
+│   │   ├── auth.js              # Rutas de autenticación
+│   │   ├── tours.js             # Rutas de tours
+│   │   └── admin.js             # Rutas de administrador
+│   └── middleware/
+│       └── auth.js              # Middleware de autenticación
+│
+├── promocional-atla.mp4
+└── README.md
+	
+	
+	
+Cluster: Cluster0
+Usuario: superAdmin
+Contraseña corregida: Contra270717 
+IP permitidas: 0.0.0.0/0, 192.168.0.47/32
+
+Cadena conexión final:
+MONGODB_URI=mongodb+srv://superAdmin:Contra270717@cluster0.4wd3qvw.mongodb.net/?appName=Cluster0
+	

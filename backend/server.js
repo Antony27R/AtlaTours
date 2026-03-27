@@ -1,42 +1,155 @@
-// server.js - Servidor principal
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const path = require('path');
+const tours = [
+    // =========================
+    // TE-PATHÉ (CORRECTO)
+    // =========================
+    {
+        id: "te-pathe",
+        titulo: "Te-Pathé, Ixmiquilpan, Hidalgo",
+        categoria: "1dia realizado",
+        fecha: "15 de marzo, 2026",
+        duracion: "1 día (ida y vuelta)",
+        ubicacion: "Hidalgo",
+        estado: "realizado",
+        destacado: true,
+        ordenDestacado: 1,
 
-dotenv.config(); 
+        descripcion: "Disfruta de aguas templadas, toboganes y diversión familiar.",
+        descripcionLarga: "Disfruta un día completo de diversión y descanso en uno de los mejores balnearios de aguas templadas de Hidalgo. Relájate en sus albercas templadas, diviértete en los toboganes, la alberca de olas y deja que los más pequeños jueguen en las áreas infantiles, mientras tú te desconectas en el río lento. Ubicado cerca de CDMX y Querétaro, es ideal para todas las edades.",
 
-const app = express();
+        itinerario: [
+            { hora: "05:00 AM", actividad: "Cita en punto de reunión - La llantera Avante Nativitas" },
+            { hora: "05:30 AM", actividad: "Salida puntual rumbo a Hidalgo" },
+            { hora: "08:00 AM", actividad: "Llegada al Santuario del Señor de las Maravillas" },
+            { hora: "08:00 - 09:30 AM", actividad: "Tiempo libre para desayuno y recorrido" },
+            { hora: "09:30 AM", actividad: "Salida rumbo al balneario" },
+            { hora: "10:30 - 07:30 PM", actividad: "Tiempo libre en el balneario" },
+            { hora: "06:00 PM", actividad: "Salida a CDMX" },
+            { hora: "09:00 - 10:30 PM", actividad: "Llegada aproximada a CDMX" }
+        ],
 
-// Middleware
-app.use(cors({
-    origin: ['http://localhost:5500', 'http://127.0.0.1:5500', 'http://localhost:3000', 'https://atla-tours-backend.onrender.com'],
-    credentials: true
-}));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend')));
+        incluye: [
+            "Viaje redondo ida y vuelta",
+            "Entrada al balneario",
+            "Seguro de viajero",
+            "Coordinación ATLA TOURS",
+            "Acceso a todas las atracciones"
+        ],
 
-// Conexión a MongoDB - FORZAR base de datos atla_tours
-const MONGODB_URI = process.env.MONGODB_URI;
-mongoose.connect(MONGODB_URI, {
-    dbName: 'atla_tours'  // Esto fuerza el nombre de la base de datos
-})
-    .then(() => console.log('✅ Conectado a MongoDB Atlas - Base de datos: atla_tours'))
-    .catch(err => console.error('❌ Error conectando a MongoDB:', err));
+        precios: [
+            { tipo: "Adultos", precio: "$700" },
+            { tipo: "Adultos mayores (INAPAM)", precio: "$600" },
+            { tipo: "Infantes (menos de 3 años)", precio: "Gratis (sentados en las piernas de sus padres)" }
+        ],
 
-// Rutas
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/tours', require('./routes/tours'));
-app.use('/api/admin', require('./routes/admin'));
+        promociones: [],
+        reservaNota: "Aparta tu lugar con $300",
 
-// Ruta para servir el frontend
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/index.html'));
-});
+        imagenes: [
+            "https://lh3.googleusercontent.com/pw/AP1GczPml6xZH4ze6J-b2uFys4kLOVS5uIITdWLF8ft7j55u_VI-W3x2qEjbvdvMcQShZaj4Q1lCN9O8jnS2rWUpmtc5a3HyVQ_SyMT9HxGiQznyHOldt101jl6r95OrvXLg7jEJ-xLcEXMLLl3IgFtTpdS_=w487-h255-s-no-gm",
+            "https://lh3.googleusercontent.com/pw/AP1GczOJ_SnPIIroHy35tM3AZhjk9mHBuYg3iT7qzFSDodHPrR2OxnJ3-8bVpotoiTVkWNpK-2aUreMWLXGc3qL0K75VGGb1DWVdsImBEZhpwVrf-4uKelr5_BsHmA8-goCiTnS0mohb4Of0fkijCCGtxTaJ=w686-h914-s-no-gm",
+            "https://lh3.googleusercontent.com/pw/AP1GczOJ2-Edh7fi47NfTeGpf945Q4V5R9Wg4jfVMXmxp_Ns5bZzhhWGIcQMfE57LQ2KvcLTuTOlfK1kMhfcl09FHm5tfaVLzGdsWGPZnaY4uTk1qhkevLfDVzmFmsxBIFuB2fopzKMwnrXC2RBq9r65S-PY=w600-h400-s-no-gm"
+        ]
+    },
 
-// Iniciar servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-});
+    // =========================
+    // EL GEISER (CORRECTO)
+    // =========================
+    {
+        id: "geiser",
+        titulo: "El Geiser, Tecozautla, Hidalgo",
+        categoria: "1dia proximo",
+        fecha: "17 de Mayo, 2026",
+        duracion: "1 día (ida y vuelta)",
+        ubicacion: "Hidalgo",
+        estado: "proximo",
+        destacado: true,
+        ordenDestacado: 2,
+
+        descripcion: "Aguas termales y recorrido por Tecozautla.",
+        descripcionLarga: "Descubre las maravillosas aguas termales de El Geiser en Tecozautla, Hidalgo. Disfruta de un día de relajación en sus pozas termales y conoce su centro histórico.",
+
+        itinerario: [
+            { hora: "05:00 AM", actividad: "Llegada al punto de salida" },
+            { hora: "05:30 AM", actividad: "Salida de CDMX" },
+            { hora: "09:00 AM", actividad: "Llegada al balneario El Geiser" },
+            { hora: "09:00 - 03:30 PM", actividad: "Tiempo libre" },
+            { hora: "03:30 PM", actividad: "Salida a Tecozautla" },
+            { hora: "04:00 - 05:30 PM", actividad: "Recorrido en el centro" },
+            { hora: "05:45 PM", actividad: "Salida a CDMX" },
+            { hora: "09:00 - 09:30 PM", actividad: "Llegada aproximada" }
+        ],
+
+        incluye: [
+            "Transporte redondo",
+            "Entrada al balneario El Geiser",
+            "Seguro de viajero",
+            "Coordinación ATLA TOURS",
+            "Acceso a todas las áreas del balneario"
+        ],
+
+        precios: [
+            { tipo: "Precio regular", precio: "$850" },
+            { tipo: "Primeras 10 personas (contado)", precio: "$750" },
+            { tipo: "Familias de 4 o más personas", precio: "$800 c/u" }
+        ],
+
+        promociones: [
+            { descripcion: "Primeras 10 personas (contado)", precio: "$750" },
+            { descripcion: "Familias de 4 o más", precio: "$800 c/u" }
+        ],
+
+        reservaNota: "¡Aprovecha las Ofertas! Aparta tu lugar con $300",
+
+        imagenes: [
+            "https://lh3.googleusercontent.com/pw/AP1GczNxA9RJ88LK8m4FbDPxPnF0iOvwBMfQLbIwfbr2sNpThEY8KiTgRnyk-ubmi1_NUKxB7DtmY-1CthEWIwZrcA_NqHpqK0O2HnyG1rqiza14HRwkkYZiMNcbY1nU-E8dAO3dXazG_dyjABr7L45Y5NsW=w220-h190-s-no-gm"
+        ]
+    },
+
+    // =========================
+    // ACAPULCO (CORRECTO)
+    // =========================
+    {
+        id: "acapulco",
+        titulo: "Acapulco, Guerrero - Zona Diamante y Puerto Marqués",
+        categoria: "2dias proximo",
+        fecha: "Noviembre 2026 (último fin de semana)",
+        duracion: "2 días / 1 noche",
+        ubicacion: "Guerrero",
+        estado: "proximo",
+        destacado: true,
+        ordenDestacado: 3,
+
+        descripcion: "Escapada a playas paradisíacas.",
+        descripcionLarga: "Escápate a Acapulco, disfruta la Zona Diamante, Puerto Marqués y la Quebrada.",
+
+        itinerario: [
+            { hora: "Día 1 - 06:00 AM", actividad: "Salida desde CDMX" },
+            { hora: "Día 1 - 11:00 AM", actividad: "Llegada y check-in" },
+            { hora: "Día 1 - 12:00 PM", actividad: "Tiempo libre en playa" },
+            { hora: "Día 1 - 06:00 PM", actividad: "Visita a la Quebrada" },
+            { hora: "Día 2 - 08:00 AM", actividad: "Desayuno" },
+            { hora: "Día 2 - 04:00 PM", actividad: "Salida a CDMX" }
+        ],
+
+        incluye: [
+            "Transporte redondo CDMX - Acapulco",
+            "1 noche de hospedaje en Zona Diamante",
+            "Desayuno incluido",
+            "Seguro de viajero",
+            "Coordinación ATLA TOURS"
+        ],
+
+        precios: [
+            { tipo: "Precio regular (habitación doble)", precio: "$1,800" },
+            { tipo: "Niños (3-10 años)", precio: "$1,200" },
+            { tipo: "Habitación individual", precio: "$2,500" }
+        ],
+
+        promociones: [],
+        reservaNota: "Precios sujetos a cambios. Aparta tu lugar con $500",
+
+        imagenes: [
+            "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd"
+        ]
+    }
+];

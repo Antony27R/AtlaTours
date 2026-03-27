@@ -27,7 +27,7 @@
         if (!container) return;
         
         try {
-            const response = await fetch('http://localhost:3000/api/tours/destacados');
+           const response = await fetch('https://atla-tours-backend.onrender.com/api/tours/destacados');
             const tours = await response.json();
             
             if (!tours || tours.length === 0) {

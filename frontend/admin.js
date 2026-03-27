@@ -1,6 +1,6 @@
 // admin.js - Lógica del panel de administración
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://atla-tours-backend.onrender.com/api';
 let authToken = null;
 let currentTours = [];
 

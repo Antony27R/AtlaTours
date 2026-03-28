@@ -459,7 +459,209 @@
             </div>
         </div>
     </div>
+	
+	
+    <!-- Modal de Edici車n de Tours (AGREGAR ESTO ANTES DE </body>) -->
+<div id="edit-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-edit"></i> Editar Tour</h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="edit-tour-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>ID del Tour (迆nico, sin espacios)</label>
+                        <input type="text" id="edit-id" readonly style="background: #f0f0f0;">
+                    </div>
+                    <div class="form-group">
+                        <label>T赤tulo</label>
+                        <input type="text" id="edit-titulo" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Categor赤a (ej: 1dia proximo)</label>
+                        <input type="text" id="edit-categoria" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha</label>
+                        <input type="text" id="edit-fecha" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Duraci車n</label>
+                        <input type="text" id="edit-duracion" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ubicaci車n</label>
+                        <input type="text" id="edit-ubicacion" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="edit-estado">
+                            <option value="proximo">Pr車ximo</option>
+                            <option value="realizado">Realizado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripci車n corta</label>
+                        <input type="text" id="edit-descripcion" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Descripci車n completa</label>
+                    <textarea id="edit-descripcion-larga" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Itinerario (formato: hora | actividad, uno por l赤nea)</label>
+                    <textarea id="edit-itinerario" rows="6" required></textarea>
+                    <small class="form-hint">Ejemplo: 07:00 AM | Cita en punto de reuni車n</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Qu谷 incluye (uno por l赤nea)</label>
+                    <textarea id="edit-incluye" rows="4" required></textarea>
+                    <small class="form-hint">Ejemplo: Viaje redondo ida y vuelta</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Precios (formato: tipo | precio, uno por l赤nea)</label>
+                    <textarea id="edit-precios" rows="4" required></textarea>
+                    <small class="form-hint">Ejemplo: Adultos | $700</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Promociones (opcional, formato: descripci車n | precio)</label>
+                    <textarea id="edit-promociones" rows="3"></textarea>
+                    <small class="form-hint">Ejemplo: Primeras 10 personas | $750</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nota de reserva</label>
+                    <input type="text" id="edit-reserva-nota">
+                </div>
+                
+                <div class="form-group">
+                    <label>Im芍genes (URLs, una por l赤nea)</label>
+                    <textarea id="edit-imagenes" rows="4" required></textarea>
+                    <small class="form-hint">Una URL por l赤nea</small>
+                </div>
+                
+                <div id="edit-preview" class="preview-card">
+                    <h4>?? Vista previa</h4>
+                    <div id="edit-preview-content"></div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn">?? Guardar Cambios</button>
+                    <button type="button" id="cancel-edit" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilos del modal */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        overflow-y: auto;
+    }
     
+    .modal-content {
+        background: white;
+        border-radius: var(--border-radius);
+        width: 90%;
+        max-width: 900px;
+        max-height: 90vh;
+        overflow-y: auto;
+        margin: 20px;
+        animation: modalSlideIn 0.3s ease;
+    }
+    
+    @keyframes modalSlideIn {
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 25px;
+        border-bottom: 1px solid var(--light-gray);
+        background: var(--primary-color);
+        color: white;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+    
+    .modal-header h2 {
+        margin: 0;
+        font-size: 1.3rem;
+    }
+    
+    .modal-close {
+        font-size: 1.8rem;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .modal-close:hover {
+        transform: scale(1.1);
+        color: var(--accent-color);
+    }
+    
+    .modal-body {
+        padding: 25px;
+    }
+    
+    .form-hint {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--gray-color);
+        margin-top: 5px;
+    }
+    
+    .btn-secondary {
+        background: var(--gray-color);
+    }
+    
+    .btn-secondary:hover {
+        background: #5a6268;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+        justify-content: flex-end;
+    }
+</style>
     <script src="components.js"></script>
     <script src="admin.js"></script>
 </body>

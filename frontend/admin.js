@@ -25,6 +25,14 @@ function showNotification(message, type = 'success') {
     }, 3000);
 }
 
+// Escapar HTML para seguridad
+function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 // Verificar token al cargar
 async function checkAuth() {
     const token = localStorage.getItem('adminToken');

@@ -319,7 +319,7 @@
         <!-- Login overlay -->
         <div id="login-overlay" class="login-overlay">
             <div class="login-box">
-                <h2>üîê Panel de Administraci√≥n</h2>
+                <h2>üõ† Panel de Administraci√≥n</h2>
                 <input type="text" id="login-username" placeholder="Usuario" autocomplete="off">
                 <input type="password" id="login-password" placeholder="Contrase√±a">
                 <button id="login-btn">Iniciar Sesi√≥n</button>
@@ -332,21 +332,22 @@
             <div class="admin-container">
                 <div class="admin-header">
                     <h1><i class="fas fa-cog"></i> Panel de Administraci√≥n</h1>
-                    <button id="logout-btn" class="admin-logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesi√≥n</button>
+                    <button id="logout-btn" class="admin-logout">
+					<i class="fas fa-sign-out-alt"></i> Cerrar Sesi√≥n</button>
                 </div>
                 
                 <!-- Pesta√±as -->
                 <div class="admin-tabs">
                     <button class="tab-btn active" data-tab="tours">üìã Gestionar Tours</button>
-                    <button class="tab-btn" data-tab="destacados">‚≠?Tours Destacados</button>
-                    <button class="tab-btn" data-tab="nuevo">‚û?Crear Nuevo Tour</button>
+					<button class="tab-btn" data-tab="destacados">‚≠ê Tours Destacados</button>
+					<button class="tab-btn" data-tab="nuevo">‚ûï Crear Nuevo Tour</button>
                 </div>
                 
                 <!-- Pesta√±a: Lista de Tours -->
                 <div id="tab-tours" class="tab-content active">
                     <h2>Tours Existentes</h2>
                     <div id="tours-list" class="tours-admin-list">
-                        <!-- Aqu√≠ se cargar√°n los tours din√°micamente -->
+                        <!-- Aqui se cargaran los tours dinamicamente -->
                     </div>
                 </div>
                 
@@ -355,7 +356,7 @@
                     <h2>Seleccionar Tours Destacados</h2>
                     <p class="subtitle">Selecciona hasta 3 tours que aparecer√°n en la p√°gina de inicio</p>
                     <div id="destacados-list" class="tours-admin-list">
-                        <!-- Aqu√≠ se cargar√°n los tours para seleccionar destacados -->
+                        <!-- Aqui se cargaran los tours para seleccionar destacados -->
                     </div>
                     <button id="save-destacados-btn" class="btn" style="margin-top: 20px;">Guardar Destacados</button>
                 </div>
@@ -393,7 +394,7 @@
                                     <input type="text" id="tour-duracion" placeholder="ej: 1 d√≠a (ida y vuelta)" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Ubicaci√≥n</label>
+                                    <label>Ubicaci√≥nUbicaci√≥n</label>
                                     <input type="text" id="tour-ubicacion" placeholder="ej: Hidalgo" required>
                                 </div>
                             </div>
@@ -418,7 +419,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label>Itinerario (formato: hora | actividad, uno por l√≠nea)</label>
+                                <label>Itinerario (formato: hora | actividad, uno por l√≠neal√≠nea)</label>
                                 <textarea id="tour-itinerario" placeholder="Ejemplo:&#10;07:00 AM | Cita en punto de reuni√≥n&#10;07:30 AM | Salida puntual" rows="5" required></textarea>
                             </div>
                             
@@ -428,12 +429,12 @@
                             </div>
                             
                             <div class="form-group">
-                                <label>Precios (formato: tipo | precio, uno por l√≠nea)</label>
+                                <label>Precios (formato: tipo | precio, uno por l√≠neal√≠nea)</label>
                                 <textarea id="tour-precios" placeholder="Ejemplo:&#10;Adultos | $700&#10;Ni√±os | $500" rows="4" required></textarea>
                             </div>
                             
                             <div class="form-group">
-                                <label>Promociones (opcional, formato: descripci√≥n | precio)</label>
+                                <label>Promociones (opcional, formato: Descripci√≥n | precio)</label>
                                 <textarea id="tour-promociones" placeholder="Ejemplo:&#10;Primeras 10 personas | $750" rows="3"></textarea>
                             </div>
                             
@@ -460,8 +461,7 @@
         </div>
     </div>
 	
-	
-    <!-- Modal de Edici®Æn de Tours (AGREGAR ESTO ANTES DE </body>) -->
+	<!-- Modal de Edici√≥n de Tours (AGREGAR ESTO ANTES DE </body>) -->
 <div id="edit-modal" class="modal" style="display: none;">
     <div class="modal-content">
         <div class="modal-header">
@@ -472,18 +472,18 @@
             <form id="edit-tour-form">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>ID del Tour (®≤nico, sin espacios)</label>
+                        <label>ID del Tour (√∫nico, sin espacios)</label>
                         <input type="text" id="edit-id" readonly style="background: #f0f0f0;">
                     </div>
                     <div class="form-group">
-                        <label>T®™tulo</label>
+                        <label>T√≠tulo</label>
                         <input type="text" id="edit-titulo" required>
                     </div>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Categor®™a (ej: 1dia proximo)</label>
+                        <label>Categor√≠a (ej: 1dia proximo)</label>
                         <input type="text" id="edit-categoria" required>
                     </div>
                     <div class="form-group">
@@ -494,11 +494,11 @@
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Duraci®Æn</label>
+                        <label>Duraci√≥n</label>
                         <input type="text" id="edit-duracion" required>
                     </div>
                     <div class="form-group">
-                        <label>Ubicaci®Æn</label>
+                        <label>Ubicaci√≥n</label>
                         <input type="text" id="edit-ubicacion" required>
                     </div>
                 </div>
@@ -507,41 +507,41 @@
                     <div class="form-group">
                         <label>Estado</label>
                         <select id="edit-estado">
-                            <option value="proximo">Pr®Æximo</option>
+                            <option value="proximo">Pr√≥ximo</option>
                             <option value="realizado">Realizado</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Descripci®Æn corta</label>
+                        <label>Descripci√≥n corta</label>
                         <input type="text" id="edit-descripcion" required>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label>Descripci®Æn completa</label>
+                    <label>Descripci√≥n completa</label>
                     <textarea id="edit-descripcion-larga" rows="4" required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label>Itinerario (formato: hora | actividad, uno por l®™nea)</label>
+                    <label>Itinerario (formato: hora | actividad, uno por l√≠nea)</label>
                     <textarea id="edit-itinerario" rows="6" required></textarea>
-                    <small class="form-hint">Ejemplo: 07:00 AM | Cita en punto de reuni®Æn</small>
+                    <small class="form-hint">Ejemplo: 07:00 AM | Cita en punto de reuni√≥n</small>
                 </div>
                 
                 <div class="form-group">
-                    <label>Qu®¶ incluye (uno por l®™nea)</label>
+                    <label>Qu√© incluye (uno por l√≠nea)</label>
                     <textarea id="edit-incluye" rows="4" required></textarea>
                     <small class="form-hint">Ejemplo: Viaje redondo ida y vuelta</small>
                 </div>
                 
                 <div class="form-group">
-                    <label>Precios (formato: tipo | precio, uno por l®™nea)</label>
+                    <label>Precios (formato: tipo | precio, uno por l√≠nea)</label>
                     <textarea id="edit-precios" rows="4" required></textarea>
                     <small class="form-hint">Ejemplo: Adultos | $700</small>
                 </div>
                 
                 <div class="form-group">
-                    <label>Promociones (opcional, formato: descripci®Æn | precio)</label>
+                    <label>Promociones (opcional, formato: descripci√≥n | precio)</label>
                     <textarea id="edit-promociones" rows="3"></textarea>
                     <small class="form-hint">Ejemplo: Primeras 10 personas | $750</small>
                 </div>
@@ -552,18 +552,18 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Im®¢genes (URLs, una por l®™nea)</label>
+                    <label>Im√°genes (URLs, una por l√≠nea)</label>
                     <textarea id="edit-imagenes" rows="4" required></textarea>
-                    <small class="form-hint">Una URL por l®™nea</small>
+                    <small class="form-hint">Una URL por l√≠nea</small>
                 </div>
                 
                 <div id="edit-preview" class="preview-card">
-                    <h4>?? Vista previa</h4>
+                    <h4>üì∏ Vista previa</h4>
                     <div id="edit-preview-content"></div>
                 </div>
                 
                 <div class="form-actions">
-                    <button type="submit" class="btn">?? Guardar Cambios</button>
+                    <button type="submit" class="btn">üíæ Guardar Cambios</button>
                     <button type="button" id="cancel-edit" class="btn btn-secondary">Cancelar</button>
                 </div>
             </form>
@@ -662,6 +662,9 @@
         justify-content: flex-end;
     }
 </style>
+	
+	
+    
     <script src="components.js"></script>
     <script src="admin.js"></script>
 </body>
